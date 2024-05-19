@@ -1,5 +1,4 @@
 """Нормализатор"""
-import pytest
 
 from main import normalize_phone_numbers
 
