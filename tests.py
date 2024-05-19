@@ -1,10 +1,14 @@
-import unittest
+"""Нормализатор"""
+import pytest
+
+from main import normalize_phone_numbers
 
 
-class MyTestCase(unittest.TestCase):
-    def test_something(self):
-        self.assertEqual(True, False)  # add assertion here
-
-
-if __name__ == '__main__':
-    unittest.main()
+def test_sum2():
+    """Нормализатор"""
+    assert normalize_phone_numbers("""
+Раз два три:
++14567890123, аываы в+4567890123456, ываыв а+78901234567ываыв аыва ыва ыва.
+""") == """
+Раз два три:
++1 (456) 789-01-23, аываы в+4 (567) 890-12-3456, ываыв а+7 (890) 123-45-67ываыв аыва ыва ыва."""
