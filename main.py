@@ -1,6 +1,11 @@
 import re
 
-def normalize_phone_numbers(text):
+
+def normalize_phone_numbers_in_file(file_path):
+    # Открываем файл и считываем его содержимое
+    with open(file_path, 'r', encoding='utf-8') as file:
+        text = file.read()
+
     # Паттерн для поиска телефонных номеров
     phone_pattern = re.compile(r'\+?\d{1,3}\s?\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{2}[-\s]?\d{2}')
 
@@ -20,14 +25,13 @@ def normalize_phone_numbers(text):
 
     # Замена всех найденных номеров в тексте
     normalized_text = re.sub(phone_pattern, repl, text)
-    return normalized_text
+
+    # Записываем измененный текст обратно в файл
+    with open(file_path, 'w', encoding='utf-8') as file:
+        file.write(normalized_text)
+
 
 # Пример использования
-input_text = """
-Раз два три:
-+14567890123, аываы в+4567890123456, ываыв а+78901234567ываыв аыва ыва ыва.
-"""
-
-normalized_text = normalize_phone_numbers(input_text)
-print("Нормализованный текст:")
-print(normalized_text)
+file_path = 'input.txt'  # Путь к вашему файлу с текстом
+normalize_phone_numbers_in_file(file_path)
+print("Телефонные номера в файле успешно нормализованы.")
