@@ -19,8 +19,8 @@ def normalize_phone_numbers(text):
         digits = re.sub(r'\D', '', phone_number)
 
         # Форматируем номер телефона
-        formatted_number = ('{} ({}) {}-{}-{}'
-                            .format(country_code, digits[1:4], digits[4:7], digits[7:9], digits[9:]))
+        formatted_number = ('{} ({}) {}-{}-{}' .format(
+            country_code, digits[1:4], digits[4:7], digits[7:9], digits[9:]))
         return formatted_number
 
     # Замена всех найденных номеров в тексте
