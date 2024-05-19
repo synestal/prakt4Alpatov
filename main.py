@@ -1,5 +1,6 @@
 import re
 
+
 def normalize_phone_numbers(text):
     # Паттерн для поиска телефонных номеров
     phone_pattern = re.compile(r'\+?\d{1,3}\s?\(?\d{3}\)?[-\s]?\d{3}[-\s]?\d{2}[-\s]?\d{2}')
@@ -19,8 +20,9 @@ def normalize_phone_numbers(text):
         return formatted_number
 
     # Замена всех найденных номеров в тексте
-    normalized_text = re.sub(phone_pattern, repl, text)
-    return normalized_text
+    normalized_textHEre = re.sub(phone_pattern, repl, text)
+    return normalized_textHEre
+
 
 # Пример использования
 input_text = """
