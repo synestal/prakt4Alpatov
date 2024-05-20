@@ -34,14 +34,17 @@ jobs:
       - name: Run lint
         run: npm run lint
 
-      - name: Run tests
-        run: pytest tests.py -v --cov --cov-report
+      - name: Test with pytest
+        run: |
+          pip install pytest pytest-cov
+          python -m pytest --cov=./myapp --cov-report xml
 
       - name: Coveralls
         uses: coverallsapp/github-action@master
         with:
           github-token: ${{ secrets.GITHUB_TOKEN }}
           flag-name: ${{matrix.os}}-node-${{ matrix.node }}
+          path-to-lcov: coverage.xml
           parallel: true
 
   finish:
